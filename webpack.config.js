@@ -32,17 +32,14 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.js', '.jsx'],
     },
-    plugins: [
+    plugins: [new CopyPlugin({
+        patterns: [
+          { from: '_redirects', to: '' },  ],
+        }),
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './src/index.html',
-        
-      }),
-      new CopyPlugin({
-        patterns: [
-          { from: '_redirects', to: '' },
-        ],
       }),
     ],
     devServer: {
