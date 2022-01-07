@@ -7,7 +7,7 @@ import {
   createTask,
   deleteTask,
   fetchTasksList,
-} from "../../lesson12/task1/src/tasksGateway.js";
+} from "../src/gateway/events.js";
 
 const App = () => {
   const [weekStartDate, setWeekStart] = useState(new Date()),
