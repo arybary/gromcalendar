@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./modal.scss";
+import { timeFivteen } from "../../utils/dateUtils";
 
 const Modal = ({
   onClose,
@@ -13,8 +14,8 @@ const Modal = ({
   const [task, setTask] = useState({
     title: "",
     date: dateClick,
-    startTime: timeStart,
-    endTime: timeEnd,
+    startTime: timeFivteen(timeStart),
+    endTime: timeFivteen(timeEnd),
     description: "",
   });
 
@@ -31,6 +32,7 @@ const Modal = ({
     dateFrom: new Date(`${date} ${startTime}`),
     dateTo: new Date(`${date} ${endTime}`),
   };
+
   const intervalTask =
     (Date.parse(newTask.dateTo) - Date.parse(newTask.dateFrom)) /
     (60 * 60 * 1000);
@@ -39,18 +41,13 @@ const Modal = ({
     events === []
       ? true
       : events.every((el) => {
-          console.log(
-            Date.parse(newTask.dateTo)<
-            Date.parse(el.dateFrom), Date.parse(newTask.dateFrom)>
-            Date.parse(el.dateTo)
-          );
           return (
             Date.parse(newTask.dateTo) < Date.parse(el.dateFrom) ||
             Date.parse(newTask.dateFrom) > Date.parse(el.dateTo)
           );
         });
   const trueIntervalTask =
-    intervalTask > 0 && intervalTask < 6 && originalTime && title !== "";
+    intervalTask > 0 && originalTime && intervalTask < 6 && title !== "";
 
   const dataError = () => {
     const errorOriginal = !originalTime
@@ -74,7 +71,7 @@ const Modal = ({
     onCreate(task);
     onClose(false);
   };
-  console.log(task);
+
   return (
     <div className="modal overlay">
       <div className="modal__content">
