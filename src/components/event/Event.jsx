@@ -21,19 +21,21 @@ const Event = ({
 
   return (
     <>
-      {id ===0 ? (
+      {id === 0 ? (
         <div style={eventStyle} className="red-line"></div>
       ) : (
         <div
           style={eventStyle}
           className="event"
           onClick={() => {
-            setVisibility(!visibility);
+            trueDelete
+              ? setVisibility(!visibility)
+              : alert("Нельзя удалять событие раньше чем за 15 мин до начала");
           }}
         >
           <div className="event__title">{title}</div>
           <div className="event__time">{time}</div>
-          {visibility && trueDelete ? (
+          {visibility ? (
             <button
               className="delete-event-btn "
               onClick={() => {
@@ -52,7 +54,7 @@ const Event = ({
 Event.propTypes = {
   height: PropTypes.number.isRequired,
   marginTop: PropTypes.number.isRequired,
-  minutePredel: PropTypes.number.isRequired,  
+  minutePredel: PropTypes.number.isRequired,
   time: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
 };

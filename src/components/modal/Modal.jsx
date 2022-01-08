@@ -39,6 +39,11 @@ const Modal = ({
     events === []
       ? true
       : events.every((el) => {
+          console.log(
+            Date.parse(newTask.dateTo)<
+            Date.parse(el.dateFrom), Date.parse(newTask.dateFrom)>
+            Date.parse(el.dateTo)
+          );
           return (
             Date.parse(newTask.dateTo) < Date.parse(el.dateFrom) ||
             Date.parse(newTask.dateFrom) > Date.parse(el.dateTo)
@@ -47,11 +52,29 @@ const Modal = ({
   const trueIntervalTask =
     intervalTask > 0 && intervalTask < 6 && originalTime && title !== "";
 
+  const dataError = () => {
+    const errorOriginal = !originalTime
+      ? "Два события не могут пересекаться по времени "
+      : "";
+    const errorOneDay =
+      intervalTask > 0
+        ? ""
+        : "Событие должно начаться и закончиться в пределах одного дня ";
+    const errorMaxInterval =
+      intervalTask > 0 ? "" : "Одно событие не может быть дольше 6 часов ";
+    const notTitle = title !== "" ? "" : "Заполни заголовок ";
+    return alert(notTitle + errorOriginal + errorOneDay + errorMaxInterval);
+  };
+
   const createNewTask = (task) => {
+    const time =
+      Date.parse(newTask.dateTo) < Date.parse(new Date())
+        ? alert("создаеться завершенное событие")
+        : null;
     onCreate(task);
     onClose(false);
   };
-
+  console.log(task);
   return (
     <div className="modal overlay">
       <div className="modal__content">
@@ -108,11 +131,7 @@ const Modal = ({
               onClick={(e) => {
                 e.preventDefault();
 
-                trueIntervalTask
-                  ? createNewTask(task)
-                  : alert(
-                      "DATA error:not an empty title, interval maximum 6 hours, original interval"
-                    );
+                trueIntervalTask ? createNewTask(task) : dataError();
               }}
             >
               Create
