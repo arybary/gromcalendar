@@ -61,7 +61,7 @@ const Modal = ({
         ? ""
         : "Событие должно начаться и закончиться в пределах одного дня ";
     const errorMaxInterval =
-      intervalTask > 0 ? "" : "Одно событие не может быть дольше 6 часов ";
+      intervalTask < 6 ? "" : "Одно событие не может быть дольше 6 часов ";
     const notTitle = title !== "" ? "" : "Заполни заголовок ";
     return alert(notTitle + errorOriginal + errorOneDay + errorMaxInterval);
   };
