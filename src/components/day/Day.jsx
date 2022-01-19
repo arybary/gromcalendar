@@ -8,21 +8,19 @@ const Day = ({ events, dataDay, dayEvents, onDelete, onCreate, dateClick }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
+    
+  const nowTime = dataDay === new Date().getDate();
 
   return (
     <div className="calendar__day" data-day={dataDay}>
+      {nowTime && <RedLine />}
       {hours.map((hour) => {
-        //getting all events from the day we will render
         const hourEvents = dayEvents.filter(
           (event) => event.dateFrom.getHours() === hour
         );
 
-        const nowTime =
-          dataDay === new Date().getDate() && hour === new Date().getHours();
-
         return (
           <div key={dataDay + hour}>
-            {nowTime && <RedLine />}
             <Hour
               dataHour={hour}
               dateClick={dateClick}
