@@ -19,9 +19,9 @@ npm run build
 - [BEM methodology](https://en.bem.info/methodology/)
 - [JavaScript](https://ru.wikipedia.org/wiki/JavaScript)
 - [frontend tools](http://frontendtools.com/)
-- [Webpack] (https://ru.wikipedia.org/wiki/Webpack)
-- [REACT] (https://ru.wikipedia.org/wiki/React)
-- [moment] (https://momentjs.com/)
+- [Webpack](https://ru.wikipedia.org/wiki/Webpack)
+- [REACT](https://ru.wikipedia.org/wiki/React)
+- [moment](https://momentjs.com/)
 
 
 Author: Medvid Rostislav
