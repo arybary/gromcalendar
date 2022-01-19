@@ -11,7 +11,7 @@ const Navigation = ({ weekDates }) => {
           moment(dayDate).format("MMMM Do YYYY") !==
           moment(new Date()).format("MMMM Do YYYY")
             ? { backgroundColor: "cornflowerblue", color: "#fff" }
-            : { backgroundColor: "red", color: "#000",fontWeight:'bold' };
+            : { backgroundColor: "red", color: "#000", fontWeight: "bold" };
         return (
           <div
             key={index}
