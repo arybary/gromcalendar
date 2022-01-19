@@ -1,5 +1,6 @@
 import React from "react";
 import Hour from "../hour/Hour";
+import RedLine from "./RedLine";
 import PropTypes from "prop-types";
 import "./day.scss";
 
@@ -7,6 +8,7 @@ const Day = ({ events, dataDay, dayEvents, onDelete, onCreate, dateClick }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
+
   return (
     <div className="calendar__day" data-day={dataDay}>
       {hours.map((hour) => {
@@ -15,16 +17,21 @@ const Day = ({ events, dataDay, dayEvents, onDelete, onCreate, dateClick }) => {
           (event) => event.dateFrom.getHours() === hour
         );
 
+        const nowTime =
+          dataDay === new Date().getDate() && hour === new Date().getHours();
+
         return (
-          <Hour
-            key={dataDay + hour}
-            dataHour={hour}
-            dateClick={dateClick}
-            hourEvents={hourEvents}
-            onDelete={onDelete}
-            onCreate={onCreate}
-            events={events}
-          />
+          <div key={dataDay + hour}>
+            {nowTime && <RedLine />}
+            <Hour
+              dataHour={hour}
+              dateClick={dateClick}
+              hourEvents={hourEvents}
+              onDelete={onDelete}
+              onCreate={onCreate}
+              events={events}
+            />
+          </div>
         );
       })}
     </div>
