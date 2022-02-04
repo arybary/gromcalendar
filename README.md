@@ -22,7 +22,7 @@ npm run build
 - [frontend tools](http://frontendtools.com/)
 - [Webpack](https://ru.wikipedia.org/wiki/Webpack)
 - [REACT](https://ru.wikipedia.org/wiki/React)
-- [REDX](https://redux.js.org/)
+- [REDUX](https://redux.js.org/)
 
 
 Author: Medvid Rostislav
