@@ -1,5 +1,5 @@
 ### [Site link]
-<a href="">#Todo List</a>
+<a href="https://frosty-thompson-fea016.netlify.app/"># Grom_calendar</a>
 ## Getting Started and Create
 
 development:
@@ -22,7 +22,7 @@ npm run build
 - [frontend tools](http://frontendtools.com/)
 - [Webpack](https://ru.wikipedia.org/wiki/Webpack)
 - [REACT](https://ru.wikipedia.org/wiki/React)
-- [REDUX](https://redux.js.org/)
+- [moment](https://momentjs.com/)
 
 
 Author: Medvid Rostislav
