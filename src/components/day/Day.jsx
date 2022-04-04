@@ -2,14 +2,17 @@ import React from "react";
 import Hour from "../hour/Hour";
 import RedLine from "./RedLine";
 import PropTypes from "prop-types";
+import moment from "moment";
 import "./day.scss";
 
 const Day = ({ events, dataDay, dayEvents, onDelete, onCreate, dateClick }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
-    
-  const nowTime = dataDay === new Date().getDate();
+
+  const nowTime =
+    moment(dataDay).format("MMMM Do YYYY") ===
+    moment(new Date()).format("MMMM Do YYYY");
 
   return (
     <div className="calendar__day" data-day={dataDay}>
@@ -37,7 +40,6 @@ const Day = ({ events, dataDay, dayEvents, onDelete, onCreate, dateClick }) => {
 };
 
 Day.propTypes = {
-  dataDay: PropTypes.number.isRequired,
   dayEvents: PropTypes.array.isRequired,
   dateClick: PropTypes.object.isRequired,
   events: PropTypes.array.isRequired,

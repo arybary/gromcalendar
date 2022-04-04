@@ -19,12 +19,13 @@ const Week = ({ weekDates, events, onDelete, onCreate }) => {
         return (
           <Day
             key={dayStart.getDate()}
-            dataDay={dayStart.getDate()}
+            dataDay={dayStart}
             dateClick={dayStart}
             dayEvents={dayEvents}
             onDelete={onDelete}
             onCreate={onCreate}
             events={events}
+            weekDates={weekDates}
           />
         );
       })}
